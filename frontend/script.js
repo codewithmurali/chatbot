@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const messageElement = document.createElement("div");
     messageElement.classList.add("message");
 
-    // Add additional class based on message type
+   
     if (messageType === "bot-response") {
       messageElement.classList.add("bot-response");
     } else if (messageType === "user-message") {
@@ -44,9 +44,9 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         const response = data.response;
 
-        // Check if the response is an object
+      
         if (typeof response === "object") {
-          // Format the response for display
+          
           let formattedResponse =
             "<p><strong>Head of Department:</strong> " +
             response["Head of Department"] +
@@ -57,18 +57,18 @@ document.addEventListener("DOMContentLoaded", function () {
             formattedResponse += "<li>" + professor + "</li>";
           });
           formattedResponse += "</ul>";
-          displayMessage(formattedResponse, "bot-response"); // Display bot response
+          displayMessage(formattedResponse, "bot-response"); 
 
-          // Display user message only if there's a bot response
+        
           
         } else {
-          // Display the response as is
-          displayMessage(response, "bot-response"); // Display bot response
+         
+          displayMessage(response, "bot-response"); 
         }
       })
       .catch((error) => {
         const errorMessage = "An error occurred: " + error.message;
-        displayMessage(errorMessage, "error-message"); // Display error message
+        displayMessage(errorMessage, "error-message"); 
       });
   }
 });

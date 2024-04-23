@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
 const path = require("path");
 const app = express();
 const port = 3000;
@@ -56,7 +56,7 @@ const qaData = {
     ],
   },
   "Who are the professors for CIVIL dept?": {
-    "Head of Department": "", // Head not specified
+    "Head of Department": "",
     Professors: [
       "DHIVYA N [Asst professor]",
       "SANTHOSH KUMAR [Asst professor]",
@@ -80,17 +80,17 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/index.html"));
 });
 
-app.post('/message', (req, res) => {
+app.post("/message", (req, res) => {
   const message = req.body.message;
 
   if (!message) {
-      return res.status(400).json({ error: 'Message is required' });
+    return res.status(400).json({ error: "Message is required" });
   }
 
   const response = qaData[message];
 
   if (!response) {
-      return res.status(404).json({ error: 'Question not found' });
+    return res.status(404).json({ error: "Question not found" });
   }
 
   return res.json({ response });
